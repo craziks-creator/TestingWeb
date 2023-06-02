@@ -17,18 +17,18 @@ db = Session(bind=engine.connect())
 
 #-------------------------channel 1----------------------------------#
 
-url1 = "https://en.wikinews.org/wiki/Main_Page"
+url1 = "https://sscnr.nic.in/newlook/site/application_status.html"
 tag1 = "Wiki"
-table_name1 = "wikinews"
+table_name1 = "nrnews"
 
 # Info extractor to process data format
 ie1 = InfoExtractor()
 
 # Select elements by CSS-based selector
-ie1.set_list_selector('#MainPage_latest_news_text > ul > li')
-ie1.set_title_selector('#firstHeading')
-ie1.set_paragraph_selector('#mw-content-text > div > p:not(p:nth-child(1))')
-ie1.set_time_selector('#mw-content-text > div > p:nth-child(1) > strong')
+ie1.set_list_selector('div.inner_page > ul > li')
+ie1.set_title_selector('h4')
+ie1.set_paragraph_selector('div.inner_page > ul > li a')
+ie1.set_time_selector('')
 ie1.set_source_selector('span.sourceTemplate')
 ie1.max_post_length = 2000
 
